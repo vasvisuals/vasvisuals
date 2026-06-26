@@ -670,7 +670,7 @@ document.getElementById('starPicker').addEventListener('mouseleave',()=>{
 // init 5 stars active
 document.querySelectorAll('#starPicker span').forEach(x=>x.classList.add('active'));
 
-/* ── SUBMIT REVIEW (mailto) ── */
+/* ── SUBMIT REVIEW (Gmail new tab) ── */
 function submitReview(){
   const name=document.getElementById('rName').value.trim();
   const role=document.getElementById('rRole').value.trim();
@@ -682,11 +682,13 @@ function submitReview(){
     'Name: '+name+'\nRole: '+(role||'—')+'\nRating: '+stars+' ('+chosenStars+'/5)'+
     '\n\nReview:\n'+text
   );
-  window.location.href='mailto:mailmedude94@gmail.com?subject='+subject+'&body='+body;
+  const gmailUrl='https://mail.google.com/mail/?view=cm&fs=1&to=mailmedude94@gmail.com&su='+subject+'&body='+body;
+  window.open(gmailUrl,'_blank');
+  document.getElementById('reviewForm').style.display='none';
   document.getElementById('reviewSuccess').style.display='block';
 }
 
-/* ── SUBMIT BOOKING (mailto) ── */
+/* ── SUBMIT BOOKING (Gmail new tab) ── */
 function submitBooking(){
   const name=document.getElementById('bName').value.trim();
   const email=document.getElementById('bEmail').value.trim();
@@ -699,7 +701,8 @@ function submitBooking(){
     'Name: '+name+'\nEmail: '+email+'\nService: '+(service||'Not specified')+
     '\nPreferred Time: '+(date||'Not specified')+'\n\nProject Details:\n'+(msg||'—')
   );
-  window.location.href='mailto:mailmedude94@gmail.com?subject='+subject+'&body='+body;
+  const gmailUrl='https://mail.google.com/mail/?view=cm&fs=1&to=mailmedude94@gmail.com&su='+subject+'&body='+body;
+  window.open(gmailUrl,'_blank');
   document.getElementById('bookFormWrap').style.display='none';
   document.getElementById('bookSuccess').style.display='block';
 }
